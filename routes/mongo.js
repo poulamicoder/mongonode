@@ -46,7 +46,7 @@ router.post('/', function(req, res, next) {                 //receiving post req
 });
 
 function  init(dbName,collName) {                       //for initializing mongodb object
-    _url = "mongodb://localhost:27017/" + dbName;
+    _url = "mongodb://newmongoapp:UBiylxbkpDoMvH8Od2yfW70Ofq4jyDYH3NrrEtTFoY3dKRbVk8rGkDhOSLFT0TrxzTajPhTFzl7WuthPNj7adg==@newmongoapp.documents.azure.com:10255/?ssl=true" + dbName;
     _collectName = collName;
     console.log("init");
     return true;

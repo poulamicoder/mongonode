@@ -46,22 +46,23 @@ router.post('/', function(req, res, next) {                 //receiving post req
 });
 
 function  init(dbName,collName) {                       //for initializing mongodb object
-
-    _url = "mongodb://newmongoapp:UBiylxbkpDoMvH8Od2yfW70Ofq4jyDYH3NrrEtTFoY3dKRbVk8rGkDhOSLFT0TrxzTajPhTFzl7WuthPNj7adg==@newmongoapp.documents.azure.com:10255/?ssl=true" + dbName;
-
-  //  _url = "mongodb://localhost:27017/" + dbName;
-
+    _url = "mongodb://localhost:27017/" + dbName;
     _collectName = collName;
     console.log("init");
     return true;
 }
 function _connectDB() {                                 //connecting mongodb
     mongoClient = require('mongodb').MongoClient;
-    mongoClient.connect(_url, function (err,db) {
-        if (err) throw err;
+    mongoClient.connect("mongodb://newmongoapp:UBiylxbkpDoMvH8Od2yfW70Ofq4jyDYH3NrrEtTFoY3dKRbVk8rGkDhOSLFT0TrxzTajPhTFzl7WuthPNj7adg==@newmongoapp.documents.azure.com:10255/?ssl=true", function (err, db) {
+  if (err) throw err;
         console.log("connected to " + _url);
         _createCollection(db);
-    });
+});
+    // mongoClient.connect(_url, function (err,db) {
+    //     if (err) throw err;
+    //     console.log("connected to " + _url);
+    //     _createCollection(db);
+    // });
     return true;
 }
 function _createCollection(db) {                        //new collection create or get exist collection
@@ -84,7 +85,6 @@ function _panel(command) {                              //mongodb control panel.
             });
             break;
         case 'f':
-
             console.log('find');
            // var keyword = 
            //keyword = JSON.stringify(keyword);
@@ -124,26 +124,6 @@ function _panel(command) {                              //mongodb control panel.
                 //var data = {"message":"Record added! ",result:records.ops};
                 _res.send(keyword + " id  deleted");
             });
-
-            console.log("find");
-            _collection.find(keyword,function(err, records){
-                console.log(records);
-                //var data = {"message":"Record added! ",result:records.ops};
-                _res.send("found! ");
-            });
-            break;
-        case 'u':
-            console.log("update");
-            _collection.update(keyword,doc,function(err, records){
-                console.log(records);
-                _res.send("Updated! ");
-            });
-            break;
-        case 'd':
-            console.log("delete");
-            _collection.remove(keyword,function(err, records){
-                console.log(records);
-                _res.send("Deleted!");
             });
             break;
     }

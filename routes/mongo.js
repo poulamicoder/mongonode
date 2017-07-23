@@ -53,12 +53,12 @@ function  init(dbName,collName) {                       //for initializing mongo
 }
 function _connectDB() {                                 //connecting mongodb
     mongoClient = require('mongodb').MongoClient;
-   
-mongoClient.connect("mongodb://newmongoapp:UBiylxbkpDoMvH8Od2yfW70Ofq4jyDYH3NrrEtTFoY3dKRbVk8rGkDhOSLFT0TrxzTajPhTFzl7WuthPNj7adg==@newmongoapp.documents.azure.com:10255/?ssl=true", function (err, db) {
+ mongoClient.connect("mongodb://newmongoapp:UBiylxbkpDoMvH8Od2yfW70Ofq4jyDYH3NrrEtTFoY3dKRbVk8rGkDhOSLFT0TrxzTajPhTFzl7WuthPNj7adg==@newmongoapp.documents.azure.com:10255/?ssl=true", function (err, db) {
   if (err) console.log("err " + err);
         console.log("connected to " + _url);
         _createCollection(db);
-});
+});  
+
 //     mongoClient.connect(_url, function (err,db) {
 //         if (err) throw err;
 //         console.log("connected to " + _url);
